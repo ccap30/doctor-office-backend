@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const cors = require('cors'); // Make sure this line is present
 
 const app = express();
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 
-mongoose.connect('mongodb://mongo:27017/appointments', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://mongo-service:27017/appointments', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const AppointmentSchema = new mongoose.Schema({
